@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include "layouts/user.html" with item=user %}
+    <div class="d-flex gap-3 align-items-center">
+        <h1>Tag:</h1>
+        <h2><i>abcde</i></h2>
+    </div>
+    <div class="col-8">
+        {% for question in questions %}
+            {% include "layouts/question.html" with item=question %}
+
+        {% endfor %}
+
+        {% include "layouts/pagination_id.html" with page_obj=questions name="tag" id=question_tag  %}
+    </div>
+    <div class="col-4">
+        {% include "layouts/tags.html" with tags=tags %}
+        {% include "layouts/best.html" with users=users %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+        <div class="d-flex justify-content-between gap-3">
+          <div class="border">
+            <img src="{% static 'img/img.jpg' %}" width="50" height="50" />
+          </div>
+          <div class="d-flex flex-column justify-content-between">
+                            <div>{{item.username}}</div>
+                            <a class="settings" href="{% url 'settings' %}">settings</a>
+                            <a class="log_out" href="{% url 'logout' %}">log out</a>
+          </div>
+        </div>
+                    {% else %}
+
+                        <a class="nav-link active" aria-current="page" href="{% url 'login'%}">Login</a>
+
+
+                        <a class="nav-link" href="{% url 'signup'%}">Register</a>
+                    {% endif %}
+
+      </div>
+    </nav>
+
+    <main class="container-fluid container-lg mt-3">
+
+      <div class="row">

@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+{% include "layouts/user.html" with item=user %}
+<div class="d-flex gap-3 align-items-center mb-3">
+  <h2>Settings: <i>{{user.username}}</i></h2>
+      </div>
+
+      <div class="row ">
+        <div class="col-8">
+            {% for message in messages %}
+        <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+               {{ message }}
+        </div>
+    {% endfor %}
+          <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        </div>
+
+        <div class="col-4">
+        {% include "layouts/tags.html" with tags=tags %}
+        {% include "layouts/best.html" with users=users %}
+        </div>
+      </div>
+{% endblock %}

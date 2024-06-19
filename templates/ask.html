@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+{% include "layouts/user.html" with item=user %}
+<main class="container-fluid container-lg mt-3">
+      <div class="d-flex gap-3 align-items-center">
+        <h1>New Question</h1>
+      </div>
+<div class="row ">
+      <div class="col-8">
+
+        <form method="post" action="">
+          {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-4">
+        {% include "layouts/tags.html" with tags=tags %}
+        {% include "layouts/best.html" with users=users %}
+        </div> </div>
+{% endblock content %}

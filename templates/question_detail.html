@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% include "layouts/user.html" with item=user %}
+    <div class="col-8">
+        {% include "layouts/question.html" with item=question %}
+        <hr width="100%"  color= "black" size="5px" align="center" />
+        {% for answer in answers %}
+            {% include "layouts/answer.html" with ans=answer%}
+        {% endfor %}
+
+        {% include "layouts/pagination_id.html" with page_obj=answers name="question" id=question.pk %}
+    <form method="post" action="">
+          {% csrf_token %}
+            {% bootstrap_form answer_form %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-4">
+        {% include "layouts/tags.html" with tags=tags %}
+        {% include "layouts/best.html" with users=users %}
+    </div>
+{% endblock %}
